@@ -1,0 +1,6 @@
+/corona-bot.conf
+/.gradle/
+/build/
+/.idea/
+/cronjob
+/install.bat
