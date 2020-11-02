@@ -24,7 +24,7 @@ class Factory(config: Config) {
             .awaitReady()
     }
 
-    val notificationChannel: TextChannel by lazy {
-        jda.getTextChannelsByName(config.getString("discord.channel"), true).first()
+    val notificationChannels: List<TextChannel> by lazy {
+        jda.getTextChannelsByName(config.getString("discord.channel"), true)
     }
 }

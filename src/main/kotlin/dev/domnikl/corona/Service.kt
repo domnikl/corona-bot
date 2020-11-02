@@ -8,7 +8,7 @@ fun main(args: Array<String>) {
 
     val config = ConfigFactory.parseFile(File(args[0]))
     val factory = Factory(config)
-    val notificationChannel = factory.notificationChannel
+    val notificationChannels = factory.notificationChannels
     val dataSource = factory.dataSource
     val chatMessageBuilder = ChatMessageBuilder()
 
@@ -20,7 +20,9 @@ fun main(args: Array<String>) {
         listOf(":warning: Konnte den heutigen Corona-Report wegen eines Fehlers nicht erzeugen: ${e.message}")
     }.joinToString("\n\n")
 
-    notificationChannel.sendMessage("$message\n\nBleibt bitte gesund! :sunny:").queue()
+    notificationChannels.forEach {
+        it.sendMessage("$message\n\nBleibt bitte gesund! :sunny:").queue()
+    }
 
     factory.jda.shutdown()
 }
