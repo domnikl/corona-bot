@@ -7,7 +7,6 @@ class ChatMessageBuilder {
             **${"%.2f".format(report.sevenDaysIncidence)}** 7-Tage-Inzidenz
             **${report.totalCases}** aktuell Infizierte
             **${report.deathCases}** Todesfälle
-
         """.trimIndent()
     }
 
