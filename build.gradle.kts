@@ -40,7 +40,7 @@ tasks {
     }
 
     shadowJar {
-        archiveBaseName.set("${project.name}-fat")
+        archiveFileName.set("${project.name}.jar")
 
         // defaults to all, so removing this overrides the normal, non-fat jar
         archiveClassifier.set("")

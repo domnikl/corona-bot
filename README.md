@@ -26,9 +26,10 @@ Reports will look something like this:
 >
 > Bleibt bitte gesund! :sunny:
 
-## Configuration
+## Using it
 
-You need to configure the following parameters, put them in `corona-bot.conf` and provide it as the first argument when running Corona bot like this: `java -jar corona-bot.jar corona-bot.conf`. 
+First download the fat jar from the [releases](https://github.com/domnikl/corona-bot/releases) page. Then you need to 
+configure the following parameters and put them in `corona-bot.conf`. You can create a new bot on https://discord.com/developers/applications/.
 
 ```properties
 discord {
@@ -42,4 +43,5 @@ robertKochDataSource {
 }
 ```
 
-As the data can get really big and data will only be published at 00:00 local time, I would advise you to run this in a cronjob.
+Then run it like this: `java -jar corona-bot.jar corona-bot.conf`. As the data can get really big and data will only
+be published at 00:00 local time every day, I would advise you to run this in a daily cronjob.
