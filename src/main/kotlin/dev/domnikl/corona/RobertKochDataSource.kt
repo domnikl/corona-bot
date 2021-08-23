@@ -1,9 +1,10 @@
 package dev.domnikl.corona
 
+import com.fasterxml.jackson.annotation.JsonAlias
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.databind.ObjectMapper
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import org.geojson.FeatureCollection
 import java.net.URL
 import java.text.ParsePosition
 import java.time.LocalDate
@@ -22,29 +23,44 @@ class RobertKochDataSource(
             .build()
 
         val response = client.newCall(request).execute()
-
-        val featureCollection: FeatureCollection = objectMapper.readValue(
-            response.body?.byteStream(),
-            FeatureCollection::class.java
-        )
+        val arcgis = objectMapper.readValue(response.body?.byteStream(), Arcgis::class.java)
 
         val dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
         val sortIndexes = regions.withIndex().associate { it.value to it.index }
 
-        return featureCollection.features
-            .filter { it.properties["GEN"] in regions }
-            .sortedBy { sortIndexes[it.properties["GEN"]] }
+        return arcgis.features
+            .filter { it.attributes.gen in regions }
+            .sortedBy { sortIndexes[it.attributes.gen] }
             .map { CoronaReport(
                 LocalDate.from(
                     dateTimeFormatter.parse(
-                        it.properties["last_update"] as String,
+                        it.attributes.lastUpdate,
                         ParsePosition(0)
                     )
                 ),
-                it.properties["county"] as String,
-                it.properties["cases7_per_100k"] as Double,
-                it.properties["cases"] as Int,
-                it.properties["deaths"] as Int
+                it.attributes.county,
+                it.attributes.cases7Per100K,
+                it.attributes.cases,
+                it.attributes.deaths
             ) }
     }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    data class Attributes(
+        @JsonAlias("GEN")
+        val gen: String,
+        @JsonAlias("last_update")
+        val lastUpdate: String,
+        val county: String,
+        @JsonAlias("cases7_per_100k")
+        val cases7Per100K: Double,
+        val cases: Int,
+        val deaths: Int
+    )
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    data class Features(val attributes: Attributes)
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    data class Arcgis(val features: List<Features>)
 }

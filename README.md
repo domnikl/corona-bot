@@ -38,7 +38,7 @@ discord {
 }
 
 robertKochDataSource {
-    url = "https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson"
+    url = "https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?where=1%3D1&outFields=GEN,cases,deaths,county,last_update,cases7_per_100k&outSR=4326&f=json"
     regions = ["Main-Spessart", "Würzburg"]
 }
 ```
