@@ -3,4 +3,4 @@
 /build/
 /.idea/
 /cronjob
-/install.bat
+/deploy.sh

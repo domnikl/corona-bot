@@ -21,8 +21,8 @@ application {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.apache.logging.log4j:log4j-api-kotlin:1.0.0")
-    implementation("org.apache.logging.log4j:log4j-api:2.11.1")
-    implementation("org.apache.logging.log4j:log4j-core:2.11.1")
+    implementation("org.apache.logging.log4j:log4j-api:2.16.0")
+    implementation("org.apache.logging.log4j:log4j-core:2.16.0")
     implementation("com.squareup.okhttp3:okhttp:4.2.1")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.9")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9")
