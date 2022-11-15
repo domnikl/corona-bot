@@ -30,7 +30,7 @@ dependencies {
     implementation("com.fasterxml.woodstox:woodstox-core:5.1.0")
     implementation("net.dv8tion:JDA:4.2.0_247")
     implementation("com.typesafe:config:1.4.2")
-    testImplementation("junit", "junit", "4.12")
+    testImplementation("junit", "junit", "4.13.2")
 }
 
 tasks {
