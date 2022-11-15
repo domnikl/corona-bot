@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm") version "1.7.21"
     application
     id("com.github.johnrengelman.shadow") version "5.0.0"
 }
