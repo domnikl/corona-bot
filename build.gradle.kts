@@ -22,7 +22,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.slf4j:slf4j-api:2.0.3")
     implementation("ch.qos.logback:logback-classic:1.4.4")
-    implementation("ch.qos.logback:logback-core:1.2.8")
+    implementation("ch.qos.logback:logback-core:1.4.4")
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.9")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9")
