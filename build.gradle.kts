@@ -20,7 +20,7 @@ application {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("org.slf4j:slf4j-api:1.7.32")
+    implementation("org.slf4j:slf4j-api:1.7.36")
     implementation("ch.qos.logback:logback-classic:1.2.8")
     implementation("ch.qos.logback:logback-core:1.2.8")
     implementation("com.squareup.okhttp3:okhttp:4.2.1")
